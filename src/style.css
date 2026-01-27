@@ -1,0 +1,9 @@
+@import "./styles/base.css";
+@import "./styles/header.css";
+@import "./styles/hero.css";
+@import "./styles/psychologists.css";
+@import "./styles/modal-appointment.css";
+@import "./styles/modal-login.css";
+@import "./styles/modal-register.css";
+@import "./styles/container.css";
+@import "./styles/favorites.css";
