@@ -13,6 +13,8 @@
   --fs-16: 16px;
   --fs-18: 18px;
   --fs-20: 20px;
+  --fs-24: 24px;
+  --fs-80: 80px;
 
   /* Motion */
   --transition-fast: 150ms ease;
