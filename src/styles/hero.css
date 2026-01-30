@@ -47,6 +47,10 @@
   color: var(--color-text-inverse);
 }
 
+.hero__link:hover {
+  background: var(--color-accent-hover);
+}
+
 .hero__link:hover .ctaIcon {
   transform: rotate(55deg);
   transform-origin: center;

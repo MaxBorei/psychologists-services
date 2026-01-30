@@ -1,3 +1,47 @@
-<div class="modal-login">
-  <p>Modal Login</p>
+<div class="modal-backdrop visually-hidden" data-modal>
+  <div class="modal__login">
+    <div class="modal__login__box">
+      <button type="button" class="modal__close" data-modal-close>
+        <svg class="modal__close__icon">
+          <use href="/sprite.svg#icon-close"></use>
+        </svg>
+      </button>
+
+      <div class="modal__login__box__content">
+        <h2 class="modal__login__title">Log In</h2>
+        <p class="modal__login__text">
+          Welcome back! Please enter your credentials to access your account and
+          continue your search for a psychologist.
+        </p>
+      </div>
+
+      <form action="/signin" method="post" class="modal__login__form">
+        <input
+          class="modal__login__input"
+          type="email"
+          name="email"
+          placeholder="Email"
+          autocomplete="email"
+          required
+        />
+
+        <div class="password-field">
+          <input
+            class="modal__login__input"
+            type="password"
+            name="password"
+            placeholder="Password"
+            autocomplete="current-password"
+            required
+          />
+          <button type="button" class="password-toggle">
+            <svg class="icon-eye">
+              <use href="/sprite.svg#icon-eye-off"></use>
+            </svg>
+          </button>
+        </div>
+      </form>
+      <button type="submit" class="modal__login__btn">Log In</button>
+    </div>
+  </div>
 </div>
