@@ -1,3 +1,63 @@
-<div class="modal-register">
-  <p>Modal Register</p>
+<div class="modal-backdrop visually-hidden" data-modal="register">
+  <div class="modal__register">
+    <div class="modal__register__box">
+      <button type="button" class="modal__close" data-modal-close>
+        <svg class="modal__close__icon">
+          <use href="/sprite.svg#icon-close"></use>
+        </svg>
+      </button>
+
+      <div class="modal__register__box__content">
+        <h2 class="modal__register__title">Registration</h2>
+        <p class="modal__register__text">
+          Thank you for your interest in our platform! In order to register, we
+          need some information. Please provide us with the following
+          information.
+        </p>
+      </div>
+
+      <form
+        id="register-form"
+        action="/signup"
+        method="post"
+        class="modal__register__form"
+      >
+        <input
+          class="modal__register__input"
+          type="text"
+          name="name"
+          placeholder="Name"
+          autocomplete="name"
+          required
+        />
+        <input
+          class="modal__register__input"
+          type="email"
+          name="email"
+          placeholder="Email"
+          autocomplete="email"
+          required
+        />
+
+        <div class="password-field">
+          <input
+            class="modal__register__input"
+            type="password"
+            name="password"
+            placeholder="Password"
+            autocomplete="current-password"
+            required
+          />
+          <button type="button" class="password-toggle">
+            <svg class="icon-eye">
+              <use href="/sprite.svg#icon-eye-off"></use>
+            </svg>
+          </button>
+        </div>
+      </form>
+      <button form="register-form" type="submit" class="modal__register__btn">
+        Sign Up
+      </button>
+    </div>
+  </div>
 </div>

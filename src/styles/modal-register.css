@@ -1,0 +1,190 @@
+.modal-backdrop-register {
+  position: fixed;
+  inset: 0;
+  background: rgba(25, 26, 21, 0.6);
+  z-index: 1000;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal__register {
+  position: relative;
+}
+.modal__register__box {
+  padding: 64px;
+  border-radius: 30px;
+  width: 566px;
+  height: 580px;
+  display: flex;
+  gap: 40px;
+  flex-direction: column;
+  background: var(--color-bg-page);
+}
+.modal__close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.modal__close__icon {
+  width: 32px;
+  height: 32px;
+  stroke-width: 2.5px;
+  fill: var(--color-text-primary);
+}
+
+.modal__register__box__content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.modal__register__title {
+  font-weight: var(--fw-medium);
+  font-size: var(--fs-40);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--color-text-primary);
+}
+.modal__register__text {
+  font-weight: var(--fw-regular);
+  font-size: var(--fs-16);
+  line-height: 1.25;
+  color: var(--color-text-secondary);
+}
+.modal__register__form {
+  width: 438px;
+  height: 192px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.modal__register__input {
+  border: 1px solid rgba(25, 26, 21, 0.1);
+  border-radius: 12px;
+  padding: 16px 20px 16px 18px;
+  width: 438px;
+  height: 52px;
+}
+.password-field {
+  position: relative;
+  width: 100%;
+}
+
+.password-field input {
+  width: 100%;
+  padding-right: 44px;
+}
+
+.password-toggle {
+  position: absolute;
+  top: 50%;
+  right: 14px;
+  transform: translateY(-50%);
+
+  width: 20px;
+  height: 20px;
+
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.icon-eye {
+  width: 20px;
+  height: 20px;
+  stroke-width: 2px;
+  fill: none;
+  stroke: var(--color-text-primary);
+}
+.modal__register__btn {
+  border-radius: 30px;
+  padding: 16px 189px;
+  width: 438px;
+  height: 52px;
+  background: var(--color-accent);
+  font-weight: var(--fw-medium);
+  font-size: var(--fs-16);
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  color: var(--color-text-inverse);
+}
+
+.modal__register__btn:hover {
+  background: var(--color-accent-hover);
+}
+
+@media screen and (max-width: 767px) {
+  .modal__register__box {
+    padding: 16px;
+    border-radius: 30px;
+    width: 320px;
+    height: auto;
+    display: flex;
+    gap: 24px;
+    flex-direction: column;
+    background: var(--color-bg-page);
+  }
+
+  .modal__close {
+    top: 12px;
+    right: 12px;
+  }
+  .modal__close__icon {
+    width: 24px;
+    height: 24px;
+    stroke-width: 1.5px;
+    fill: var(--color-text-primary);
+  }
+
+  .modal__register__box__content {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .modal__register__title {
+    font-size: var(--fs-24);
+  }
+  .modal__register__text {
+    font-size: var(--fs-14);
+  }
+  .modal__register__form {
+    width: 290px;
+    height: 192px;
+    gap: 14px;
+  }
+  .modal__register__input {
+    border: 1px solid rgba(25, 26, 21, 0.1);
+    border-radius: 12px;
+    padding: 16px 20px 16px 18px;
+    width: 290px;
+    height: 52px;
+  }
+
+  .password-field input {
+    width: 100%;
+    padding-right: 44px;
+  }
+
+  .password-toggle {
+    width: 14px;
+    height: 14px;
+  }
+
+  .modal__register__btn {
+    padding: 16px 50px;
+    width: 100%;
+    font-size: var(--fs-14);
+  }
+
+  .modal__register__btn:hover {
+    background: var(--color-accent-hover);
+  }
+}
