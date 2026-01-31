@@ -15,7 +15,12 @@
         </p>
       </div>
 
-      <form action="/signin" method="post" class="modal__login__form">
+      <form
+        id="login-form"
+        action="/signin"
+        method="post"
+        class="modal__login__form"
+      >
         <input
           class="modal__login__input"
           type="email"
@@ -41,7 +46,9 @@
           </button>
         </div>
       </form>
-      <button type="submit" class="modal__login__btn">Log In</button>
+      <button form="login-form" type="submit" class="modal__login__btn">
+        Log In
+      </button>
     </div>
   </div>
 </div>
