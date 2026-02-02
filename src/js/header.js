@@ -31,20 +31,20 @@ document.addEventListener("DOMContentLoaded", () => {
     document.body.style.overflow = "";
   };
 
-  // Початкові стани
+ 
   burgerBtn.setAttribute("aria-expanded", "false");
   closeBtn.style.display = "none";
 
   burgerBtn.addEventListener("click", openMenu);
   closeBtn.addEventListener("click", closeMenu);
 
-  // Закривати по кліку на пункт меню
+  
   mobileMenu.addEventListener("click", (e) => {
     const link = e.target.closest("a");
     if (link) closeMenu();
   });
 
-  // Закривати по ESC
+  
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape") closeMenu();
   });

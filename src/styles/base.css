@@ -29,6 +29,7 @@
   /* Shadows */
   --shadow-card: 0 8px 24px rgba(0, 0, 0, 0.06);
   --shadow-modal: 0 12px 40px rgba(0, 0, 0, 0.15);
+  --shadow-mobile-menu: -12px 0 24px rgba(0, 0, 0, 0.08);
 
   /* Text */
   --color-text-primary: #191a15;

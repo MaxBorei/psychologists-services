@@ -45,4 +45,8 @@
             d="M16 20c2.209 0 4-1.791 4-4s-1.791-4-4-4c-2.209 0-4 1.791-4 4s1.791 4 4 4z"></path>
     </symbol>
 
+    <symbol id="icon-menu" viewBox="0 0 32 32">
+        <path d="M2 6h28v6h-28zM2 14h28v6h-28zM2 22h28v6h-28z"></path>
+    </symbol>
+
 </svg>

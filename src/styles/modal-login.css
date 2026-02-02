@@ -179,8 +179,4 @@
     width: 100%;
     font-size: var(--fs-14);
   }
-
-  .modal__login__btn:hover {
-    background: var(--color-accent-hover);
-  }
 }

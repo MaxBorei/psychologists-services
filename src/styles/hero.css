@@ -180,6 +180,7 @@
     height: auto;
     aspect-ratio: 464 / 526;
     display: block;
+    z-index: 0;
   }
 
   .hero_sm_block_1,

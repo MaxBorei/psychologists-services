@@ -183,8 +183,4 @@
     width: 100%;
     font-size: var(--fs-14);
   }
-
-  .modal__register__btn:hover {
-    background: var(--color-accent-hover);
-  }
 }

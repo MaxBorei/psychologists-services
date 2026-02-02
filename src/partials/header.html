@@ -6,6 +6,8 @@
           <span class="logo__accent">psychologists</span
           ><span class="logo__point">.</span>services
         </a>
+
+        <!-- DESKTOP NAV -->
         <nav class="header-nav">
           <ul class="header-nav__list">
             <li class="header-nav__item">
@@ -20,25 +22,47 @@
         </nav>
       </div>
 
+      <!-- DESKTOP ACTIONS -->
       <div class="header-actions">
-        <button type="button" class="btn btn-secondary" data-modal-open="login">Log In</button>
-        <button type="button" class="btn btn-primary" data-modal-open="register">Registration</button>
+        <button type="button" class="btn btn-secondary" data-modal-open="login">
+          Log In
+        </button>
+        <button
+          type="button"
+          class="btn btn-primary"
+          data-modal-open="register"
+        >
+          Registration
+        </button>
       </div>
+
+      <!-- BURGER -->
       <div class="menu-buttons">
-        <button type="button" class="burger-menu" aria-label="Toggle menu">
-          <span></span>
-          <span></span>
-          <span></span>
+        <button
+          type="button"
+          class="burger-menu"
+          aria-label="Toggle menu"
+          aria-expanded="false"
+        >
+          <svg class="burger-icon" aria-hidden="true">
+            <use href="/sprite.svg#icon-menu"></use>
+          </svg>
         </button>
       </div>
     </div>
   </div>
-  
-  </div>
-  <!-- Mobile Menu -->
-  <div class="mobile-menu">
-    <div id="particles-js"></div>
-    <nav class="nav">
+
+  <!-- MOBILE DRAWER -->
+  <div class="mobile-drawer" id="mobileDrawer" aria-hidden="true">
+    <div class="drawer-head">
+      <button type="button" class="mobile-close" aria-label="Close menu">
+        <svg class="close-icon" aria-hidden="true">
+          <use href="/sprite.svg#icon-close"></use>
+        </svg>
+      </button>
+    </div>
+
+    <nav class="header-nav header-nav--mobile">
       <ul class="header-nav__list">
         <li class="nav-item">
           <a href="/" class="header-nav__link">Home</a>
@@ -48,10 +72,18 @@
         </li>
       </ul>
     </nav>
-    <button type="button" class="mobile-close" aria-label="Close menu">
-          <svg class="close-icon">
-            <use href="/sprite.svg#icon-close"></use>
-          </svg>
-        </button>
+
+    <div class="header-actions header-actions--mobile">
+      <button type="button" class="btn btn-secondary" data-modal-open="login">
+        Log In
+      </button>
+      <button type="button" class="btn btn-primary" data-modal-open="register">
+        Registration
+      </button>
+      <a href="/" class="logo drawer-logo">
+        <span class="logo__accent">psychologists</span
+        ><span class="logo__point">.</span>services
+      </a>
+    </div>
   </div>
 </header>
