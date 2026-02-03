@@ -27,42 +27,79 @@ function renderPsychologists(items) {
         experience,
         rating,
         price_per_hour,
+        license,
+        specialization,
+        reviews = [],
       }) => `
-      <li class="psychologists__card__box">
-        <div class="psychologists__img__box">
-        <span class="onlineDot" aria-hidden="true"></span>
-        <img src="${avatar_url ?? "—"}" alt="avatar" class="psychologists__img">
-        </div>
-        <div class="psychologists__card_content">
-            <div class="psychologists__card__cta__box">
-              <div class="psychlogistics__title__box">
-                <p class="psychologists__text__label">Psychologist</p>
-                <h2 class="post-title">${name ?? "—"}</h2>
-              </div>
-              <div class="psychologists__card__metaItem__box">
-                <div class="psychologists__metaItem__box">
-                  <div class="metaItem">
-                    <span class="rating-icon" aria-hidden="true">
-                      <svg class="ctaIcon_star" >
-                        <use  href="/sprite.svg#icon-Star"></use>
-                      </svg>
-                    </span>
-                    <p class="psychologists__text__metaItem">Rating: ${rating ?? "—"}</p>
+      <li>
+        <div class="psychologists__card__box">
+          <div class="psychologists__img__box">
+          <span class="onlineDot" aria-hidden="true"></span>
+          <img src="${avatar_url ?? "—"}" alt="avatar" class="psychologists__img">
+          </div>
+          <div class="psychologists__content__cta">
+            <div class="psychologists__card_content">
+                <div class="psychologists__card__cta__box">
+                  <div class="psychlogistics__title__box">
+                    <p class="psychologists__text__label">Psychologist</p>
+                    <h2 class="post-title">${name ?? "—"}</h2>
                   </div>
-                  <div class="metaItem">
-                    <p class="psychologists__text__metaItem">Price / 1 hour: <span class="price_span">${price_per_hour ?? "—"}$</span></p>
+                  <div class="psychologists__card__metaItem__box">
+                    <div class="psychologists__metaItem__box">
+                      <div class="metaItem">
+                        <span class="rating-icon" aria-hidden="true">
+                          <svg class="ctaIcon_star" >
+                            <use  href="/sprite.svg#icon-Star"></use>
+                          </svg>
+                        </span>
+                        <p class="psychologists__text__metaItem">Rating: ${rating ?? "—"}</p>
+                      </div>
+                      <div class="metaItem">
+                        <p class="psychologists__text__metaItem">Price / 1 hour: <span class="price_span">${price_per_hour ?? "—"}$</span></p>
+                      </div>
+                    </div>
+                    <span class="heart-icon" aria-hidden="true">
+                        <svg class="ctaIcon_heart" >
+                          <use  href="/sprite.svg#icon-heart"></use>
+                        </svg>
+                      </span>
                   </div>
                 </div>
-                <span class="heart-icon" aria-hidden="true">
-                    <svg class="ctaIcon_heart" >
-                      <use  href="/sprite.svg#icon-heart"></use>
-                    </svg>
-                  </span>
+                <div class="psychlodgists__pills_box">
+                  <div class="psychlogists__card_pills">
+                    <p class="psychlogists__card_pills_text">Experience: <span class="pills_text">${experience ?? "—"}</span></p>
+                  </div>
+                  <div class="psychlogists__card_pills">
+                    <p class="psychlogists__card_pills_text">License: <span class="pills_text">${license ?? "—"}</span></p>
+                  </div>
+                  <div class="psychlogists__card_pills">
+                    <p class="psychlogists__card_pills_text">Specialization: <span class="pills_text">${specialization ?? "—"}</span></p>
+                  </div>
+                  <div class="psychlogists__card_pills">
+                    <p class="psychlogists__card_pills_text">Initial consultation: <span class="pills_text">${initial_consultation ?? "—"}</span></p>
+                  </div>
+                </div>
+                <p class="psychlogists__card_text">${about ?? "—"}</p>
+                <ul class="reviews-list">${reviews
+                  .map(
+                    ({ reviewer, rating, comment }) => `
+          <li class="review-item">
+            <div class="review-head">
+              <div class="review-avatar">${(reviewer ?? "?")[0]}</div>
+              <div class="review-meta">
+                <p class="reviewer-name">${reviewer ?? "—"}</p>
+                <p class="reviewer-rating">⭐ ${rating ?? "—"}</p>
               </div>
             </div>
-            <p><b>Experience</b>: ${experience ?? "—"}</p>
-            <p><b>About</b>: ${(about ?? "").slice(0, 120)}...</p>
-            <p><b>Consultation</b>: ${initial_consultation ?? "—"}</p>
+            <p class="review-text">${comment ?? ""}</p>
+          </li>
+        `,
+                  )
+                  .join("")}
+    </ul>
+            </div>
+            <button class="psychlogists__card__btn" data-action='toggle'>Read more</button>
+          </div>
         </div>
       </li>
     `,
@@ -110,3 +147,13 @@ function onLoadMore() {
 
 document.addEventListener("DOMContentLoaded", loadInitial);
 loadMoreBtn?.addEventListener("click", onLoadMore);
+
+list.addEventListener("click", (e) => {
+  const btn = e.target.closest("[data-action='toggle']");
+  if (!btn) return;
+
+  const card = btn.closest(".psychologists__card__box");
+  if (!card) return;
+
+  card.classList.add("is-open");
+});

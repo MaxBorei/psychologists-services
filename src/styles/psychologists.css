@@ -8,9 +8,6 @@
   align-items: center;
 }
 
-.list-psychologists {
-}
-
 .list-psychologists li:not(:last-child) {
   margin-bottom: 32px;
 }
@@ -19,8 +16,8 @@
   display: flex;
   gap: 24px;
   padding: 24px;
-  width: 1184px;
-  height: 358px;
+  width: 100%;
+
   border-radius: 24px;
   background: #fbfbfb;
   margin-bottom: 64px;
@@ -49,6 +46,8 @@
   height: 120px;
   padding: 12px;
   position: relative;
+  display: flex;
+  flex-shrink: 0;
 }
 .psychologists__img {
   border-radius: 15px;
@@ -120,4 +119,62 @@
 .psychologists__metaItem__box {
   display: flex;
   gap: 32px;
+}
+
+.psychlogists__card_pills {
+  border-radius: 24px;
+  padding: 8px 16px;
+  height: 40px;
+  background: #f3f3f3;
+  display: inline-flex;
+  font-weight: var(--fw-medium);
+  line-height: 1.5;
+  color: var(--color-text-secondary-muted);
+}
+
+.pills_text {
+  color: var(--color-text-primary);
+}
+.psychlodgists__pills_box {
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 8px;
+  column-gap: 4px;
+}
+
+.psychologists__card_content {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.psychlogists__card_text {
+  font-weight: var(--fw-regular);
+  line-height: 1.25;
+  color: var(--color-text-secondary);
+}
+.psychologists__content__cta {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  align-items: start;
+}
+.psychlogists__card__btn {
+  font-weight: var(--fw-medium);
+  line-height: 1.5;
+  text-decoration: underline;
+  text-decoration-skip-ink: none;
+  color: var(--color-text-primary);
+}
+
+.psychologists__card__box.is-open .psychlogists__card__btn {
+  display: none;
+}
+
+.psychologists__extra {
+  display: none;
+}
+
+.psychologists__card__box.is-open .psychologists__extra {
+  display: block;
 }
