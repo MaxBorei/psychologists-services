@@ -1,3 +1,75 @@
-<div class="modal-appointment">
-  <p>Modal Appointment</p>
+<div class="modal-backdrop visually-hidden" data-modal="appointment">
+  <div class="modal__appointment">
+    <div class="modal__appointment__box">
+      <button type="button" class="modal__close" data-modal-close>
+        <svg class="modal__close__icon">
+          <use href="/sprite.svg#icon-close"></use>
+        </svg>
+      </button>
+
+      <div class="modal__appointment__box__content">
+        <h2 class="modal__appointment__title">
+          Make an appointment with a psychologists
+        </h2>
+        <p class="modal__appointment__text">
+          You are on the verge of changing your life for the better. Fill out
+          the short form below to book your personal appointment with a
+          professional psychologist. We guarantee confidentiality and respect
+          for your privacy.
+        </p>
+      </div>
+        <div class="psychologists__img__box__modal">
+          <img
+            src=""
+            alt="avatar"
+            class="psychologists__img__modal"
+            data-modal-avatar
+          />
+          <div class="psychologists__box__modal_cta">
+            <p class="psychologists__box__modal__text">Your psychologists</p>
+            <p class="post-title" data-modal-name></p>
+          </div>
+        </div>
+          <form
+            id="appointment-form"
+            action="/signin"
+            method="post"
+            class="modal__appointment__form"
+          >
+            <input
+              class="modal__appointment__input"
+              type="email"
+              name="email"
+              placeholder="Email"
+              autocomplete="email"
+              required
+            />
+
+            <div class="password-field">
+              <input
+                class="modal__appointment__input"
+                type="password"
+                name="password"
+                placeholder="Password"
+                autocomplete="current-password"
+                required
+              />
+              <button type="button" class="password-toggle">
+                <svg class="icon-eye">
+                  <use href="/sprite.svg#icon-eye-off"></use>
+                </svg>
+              </button>
+            </div>
+          </form>
+          <button
+            form="appointment-form"
+            type="submit"
+            class="modal__appointment__btn"
+          >
+            Log In
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

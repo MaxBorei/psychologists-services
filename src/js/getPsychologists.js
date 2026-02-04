@@ -31,7 +31,7 @@ function renderPsychologists(items) {
         specialization,
         reviews = [],
       }) => `
-      <li>
+      <li class="psychologists__card__item">
         <div class="psychologists__card__box">
           <div class="psychologists__img__box">
           <span class="onlineDot" aria-hidden="true"></span>
@@ -58,11 +58,11 @@ function renderPsychologists(items) {
                         <p class="psychologists__text__metaItem">Price / 1 hour: <span class="price_span">${price_per_hour ?? "—"}$</span></p>
                       </div>
                     </div>
-                    <span class="heart-icon" aria-hidden="true">
+                    <button class="heart-icon" aria-hidden="true">
                         <svg class="ctaIcon_heart" >
                           <use  href="/sprite.svg#icon-heart"></use>
                         </svg>
-                      </span>
+                      </button>
                   </div>
                 </div>
                 <div class="psychlodgists__pills_box">
@@ -80,23 +80,38 @@ function renderPsychologists(items) {
                   </div>
                 </div>
                 <p class="psychlogists__card_text">${about ?? "—"}</p>
+
                 <ul class="reviews-list">${reviews
                   .map(
                     ({ reviewer, rating, comment }) => `
-          <li class="review-item">
-            <div class="review-head">
-              <div class="review-avatar">${(reviewer ?? "?")[0]}</div>
-              <div class="review-meta">
-                <p class="reviewer-name">${reviewer ?? "—"}</p>
-                <p class="reviewer-rating">⭐ ${rating ?? "—"}</p>
-              </div>
-            </div>
-            <p class="review-text">${comment ?? ""}</p>
-          </li>
-        `,
+                  <li class="review-item">
+                    <div class="review-head">
+                        <div class="review-avatar">${(reviewer ?? "?")[0]}</div>
+                      <div class="review-meta">
+                    <p class="reviewer-name">${reviewer ?? "—"}</p>
+                    <p class="reviewer-rating">
+                          <svg class="ctaIcon_star" >
+                            <use  href="/sprite.svg#icon-Star"></use>
+                          </svg>
+                        </span> ${rating ?? "—"}</p>
+                      </div>
+                  </div>
+                  <p class="review-text">${comment ?? ""}</p>
+                  </li>
+                  `,
                   )
                   .join("")}
-    </ul>
+                <li class="reviews-actions">
+                  <button
+  class="btn_card_rewies"
+  data-modal-open="appointment"
+  data-name="${name ?? ""}"
+  data-avatar="${avatar_url ?? ""}"
+>
+  Make an appointment
+</button>
+                </li>
+                </ul>
             </div>
             <button class="psychlogists__card__btn" data-action='toggle'>Read more</button>
           </div>
@@ -155,5 +170,12 @@ list.addEventListener("click", (e) => {
   const card = btn.closest(".psychologists__card__box");
   if (!card) return;
 
-  card.classList.add("is-open");
+  const reviewsList = card.querySelector(".reviews-list");
+  if (!reviewsList) return;
+
+  reviewsList.classList.toggle("is-open");
+
+  btn.textContent = reviewsList.classList.contains("is-open")
+    ? ""
+    : "Read more";
 });

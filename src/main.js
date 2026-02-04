@@ -1,8 +1,8 @@
-import './style.css';
+import "./style.css";
 
-import './js/firebase.js'
-import './js/auth.js'
-import './js/header.js'
-import './js/modal.js'
-import './js/mobile-menu.js'
-import './js/getPsychologists.js'
+import "./js/firebase.js";
+import "./js/auth.js";
+import "./js/header.js";
+import "./js/getPsychologists.js";
+import "./js/mobile-menu.js";
+import "./js/modal.js";
