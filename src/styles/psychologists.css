@@ -245,11 +245,18 @@
   padding: 14px 32px;
   width: 227px;
   height: 48px;
-  background: #54be96;
+  background: var(--color-accent);
   font-family: var(--font-family);
   font-weight: 500;
   font-size: 16px;
   line-height: 125%;
   letter-spacing: -0.01em;
   color: #fbfbfb;
+}
+.icon-cheveron {
+  width: 15px;
+  height: 15px;
+  stroke-width: 1.5px;
+  fill: none;
+  stroke: var(--color-text-primary);
 }

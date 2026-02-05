@@ -17,15 +17,22 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-const openBtns = document.querySelectorAll("[data-modal-open]");
-const modals = document.querySelectorAll("[data-modal]");
-
 document.addEventListener("click", (e) => {
   const openBtn = e.target.closest("[data-modal-open]");
   if (openBtn) {
     const name = openBtn.dataset.modalOpen;
     const modal = document.querySelector(`[data-modal="${name}"]`);
-    if (modal) openModal(modal);
+    if (!modal) return;
+
+    const modalName = modal.querySelector("[data-modal-name]");
+    const modalAvatar = modal.querySelector("[data-modal-avatar]");
+
+    if (modalName) modalName.textContent = openBtn.dataset.name || "—";
+    if (modalAvatar) {
+      modalAvatar.src = openBtn.dataset.avatar;
+    }
+
+    openModal(modal);
     return;
   }
 
@@ -58,21 +65,31 @@ function closeModal(modal) {
   document.body.style.overflow = "";
 }
 
-document.addEventListener("click", (e) => {
-  const openBtn = e.target.closest("[data-modal-open]");
-  if (!openBtn) return;
+const form = document.getElementById("appointment-form");
 
-  const name = openBtn.dataset.modalOpen;
-  const modal = document.querySelector(`[data-modal="${name}"]`);
-  if (!modal) return;
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
 
-  const modalName = modal.querySelector("[data-modal-name]");
-  const modalAvatar = modal.querySelector("[data-modal-avatar]");
-
-  if (modalName) modalName.textContent = openBtn.dataset.name || "—";
-  if (modalAvatar)
-    modalAvatar.src =
-      openBtn.dataset.avatar || "/images/avatar-placeholder.jpg";
-
-  openModal(modal);
+  showSuccessMessage("Your appointment request has been sent!");
+  form.reset();
 });
+
+function showSuccessMessage(text) {
+  const message = document.createElement("div");
+  message.className = "form-success";
+  message.textContent = text;
+
+  document.body.appendChild(message);
+
+  setTimeout(() => {
+    message.classList.add("show");
+  }, 10);
+
+  setTimeout(() => {
+    message.classList.remove("show");
+    setTimeout(() => message.remove(), 300);
+  }, 3000);
+
+  const modal = form.closest("[data-modal]");
+  if (modal) closeModal(modal);
+}

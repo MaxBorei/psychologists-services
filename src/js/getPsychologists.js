@@ -175,7 +175,11 @@ list.addEventListener("click", (e) => {
 
   reviewsList.classList.toggle("is-open");
 
-  btn.textContent = reviewsList.classList.contains("is-open")
-    ? ""
+  btn.innerHTML = reviewsList.classList.contains("is-open")
+    ? `
+    <svg class="icon-cheveron">
+      <use href="/sprite.svg#icon-cheveron-up"></use>
+    </svg>
+  `
     : "Read more";
 });

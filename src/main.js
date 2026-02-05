@@ -1,5 +1,6 @@
 import "./style.css";
 
+import "./js/routes.js";
 import "./js/firebase.js";
 import "./js/auth.js";
 import "./js/header.js";

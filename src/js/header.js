@@ -31,20 +31,17 @@ document.addEventListener("DOMContentLoaded", () => {
     document.body.style.overflow = "";
   };
 
- 
   burgerBtn.setAttribute("aria-expanded", "false");
   closeBtn.style.display = "none";
 
   burgerBtn.addEventListener("click", openMenu);
   closeBtn.addEventListener("click", closeMenu);
 
-  
   mobileMenu.addEventListener("click", (e) => {
     const link = e.target.closest("a");
     if (link) closeMenu();
   });
 
-  
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape") closeMenu();
   });
