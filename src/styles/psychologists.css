@@ -253,10 +253,73 @@
   letter-spacing: -0.01em;
   color: #fbfbfb;
 }
-.icon-cheveron {
-  width: 15px;
-  height: 15px;
+.icon-chevron {
+  width: 20px;
+  height: 20px;
   stroke-width: 1.5px;
   fill: none;
   stroke: var(--color-text-primary);
+}
+.psychologists__btn__label {
+  font-weight: var(--fw-medium);
+  font-size: var(--fs-14);
+  line-height: 1.29;
+  color: var(--color-text-secondary-muted);
+}
+.psychologists_filter_box {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.psychologists_filter_box_all {
+  display: flex;
+  width: 100%;
+  justify-content: flex-start;
+  margin-bottom: 32px;
+}
+.psychologists__btn__filter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 14px;
+  padding: 14px 18px;
+  width: 226px;
+  height: 48px;
+  background: var(--color-accent);
+  font-weight: var(--fw-medium);
+  line-height: 1.25;
+  color: var(--color-text-inverse);
+  position: relative;
+}
+.icon-chevron.filter {
+  stroke: var(--color-text-inverse);
+  stroke-width: 2px;
+  fill: none;
+}
+.dropdown-menu {
+  position: absolute;
+  box-shadow: 0 20px 69px 0 rgba(0, 0, 0, 0.07);
+  background: var(--color-bg-menu);
+  border-radius: 14px;
+  width: 226px;
+  height: auto;
+  padding: 18px 14px;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  cursor: pointer;
+}
+.item {
+  font-weight: var(--fw-regular);
+  line-height: 1.5;
+  color: var(--color-text-primary);
+}
+.item.disabled {
+  font-weight: var(--fw-regular);
+  line-height: 1.5;
+  color: var(--color-text-muted);
+}
+.dropdown-menu.is-hidden {
+  display: none;
 }

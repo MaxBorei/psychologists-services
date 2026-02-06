@@ -16,7 +16,7 @@ async function getPsychologists() {
   return obj;
 }
 
-function renderPsychologists(items) {
+function renderPsychologists(items, replace = false) {
   const markup = items
     .map(
       ({
@@ -121,13 +121,41 @@ function renderPsychologists(items) {
     )
     .join("");
 
-  list.insertAdjacentHTML("beforeend", markup);
+  if (replace) list.innerHTML = markup;
+  else list.insertAdjacentHTML("beforeend", markup);
+}
+let currentSort = "az";
+
+function applySort(data, sortType) {
+  const arr = [...data];
+
+  switch (sortType) {
+    case "az":
+      return arr.sort((a, b) => (a.name ?? "").localeCompare(b.name ?? ""));
+    case "za":
+      return arr.sort((a, b) => (b.name ?? "").localeCompare(a.name ?? ""));
+    case "priceLow":
+      return arr.sort(
+        (a, b) => (a.price_per_hour ?? 0) - (b.price_per_hour ?? 0),
+      );
+    case "priceHigh":
+      return arr.sort(
+        (a, b) => (b.price_per_hour ?? 0) - (a.price_per_hour ?? 0),
+      );
+    case "popular":
+      return arr.sort((a, b) => (b.rating ?? 0) - (a.rating ?? 0));
+    case "unpopular":
+      return arr.sort((a, b) => (a.rating ?? 0) - (b.rating ?? 0));
+    default:
+      return arr;
+  }
 }
 
 function getPageSlice() {
+  const sorted = applySort(allPsychologists, currentSort);
   const start = (page - 1) * perPage;
   const end = start + perPage;
-  return allPsychologists.slice(start, end);
+  return sorted.slice(start, end);
 }
 
 function updateButton() {
@@ -147,7 +175,7 @@ async function loadInitial() {
 
     allPsychologists = await getPsychologists();
 
-    renderPsychologists(getPageSlice());
+    renderPsychologists(getPageSlice(), true);
     updateButton();
   } catch (error) {
     console.error("Ошибка запроса:", error?.response?.data || error);
@@ -177,9 +205,89 @@ list.addEventListener("click", (e) => {
 
   btn.innerHTML = reviewsList.classList.contains("is-open")
     ? `
-    <svg class="icon-cheveron">
-      <use href="/sprite.svg#icon-cheveron-up"></use>
+    <svg class="icon-chevron">
+      <use href="/sprite.svg#icon-chevron-up"></use>
     </svg>
   `
     : "Read more";
 });
+
+const filtersBox = document.querySelector(".psychologists_filter_box_all");
+const btn = filtersBox.querySelector("[data-action='toggleFilters']");
+const dropdown = btn.nextElementSibling;
+const menu = dropdown.querySelector(".dropdown-menu");
+
+const isOpen = () => !menu.classList.contains("is-hidden");
+const chevronUse = btn.querySelector("use");
+
+function openMenu() {
+  menu.classList.remove("is-hidden");
+  btn.setAttribute("aria-expanded", "true");
+  chevronUse.setAttribute("href", "/sprite.svg#icon-chevron-up");
+}
+
+function closeMenu() {
+  menu.classList.add("is-hidden");
+  btn.setAttribute("aria-expanded", "false");
+  chevronUse.setAttribute("href", "/sprite.svg#icon-chevron-down");
+}
+
+btn.addEventListener("click", (e) => {
+  e.stopPropagation(); // 🔥 КЛЮЧЕВО
+  isOpen() ? closeMenu() : openMenu();
+});
+
+document.addEventListener("click", () => {
+  if (isOpen()) closeMenu();
+});
+
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape" && isOpen()) {
+    closeMenu();
+  }
+});
+
+menu.addEventListener("click", (e) => {
+  e.stopPropagation();
+  const clickedItem = e.target.closest(".item");
+  if (!clickedItem) return;
+
+  const sortType = clickedItem.dataset.sort;
+  if (!sortType) return;
+
+  const items = menu.querySelectorAll(".item");
+  items.forEach((item) => {
+    if (item === clickedItem) item.classList.remove("disabled");
+    else item.classList.add("disabled");
+  });
+
+  if (sortType === "showAll") {
+    currentSort = "az";
+    btn.querySelector(".filter__value").textContent = "A to Z";
+  } else {
+    currentSort = sortType;
+    btn.querySelector(".filter__value").textContent = clickedItem.textContent;
+  }
+
+  page = 1;
+  const sorted = applySort(allPsychologists, currentSort);
+  renderPsychologists(sorted.slice(0, perPage), true);
+  updateButton();
+
+  closeMenu();
+});
+
+// const shevronBtn = document.querySelector(".psychologists__btn__filter");
+// const useEl = shevronBtn.querySelector("use");
+// const filterBtn = document.querySelector("[data-action='toggleFilters']");
+
+// filterBtn.addEventListener("click", () => {
+//   const isExpanded = filterBtn.getAttribute("aria-expanded") === "true";
+
+//   useEl.setAttribute(
+//     "href",
+//     isExpanded
+//       ? "/sprite.svg#icon-chevron-up"
+//       : "/sprite.svg#icon-chevron-down",
+//   );
+// });

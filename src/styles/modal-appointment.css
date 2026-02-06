@@ -175,6 +175,7 @@
   opacity: 1;
   transform: translateY(0);
 }
+
 @media screen and (max-width: 767px) {
   .modal__appointment__box {
     padding: 16px;

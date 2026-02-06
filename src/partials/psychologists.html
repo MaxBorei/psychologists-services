@@ -1,8 +1,30 @@
 <section class="psychologists" id="psychologists">
   <div class="container">
     <div class="psychologistis__section__box">
+      <div class="psychologists_filter_box_all">
+        <div class="psychologists_filter_box">
+          <p class="psychologists__btn__label">Filters</p>
+          <button class="psychologists__btn__filter" type="button" aria-expanded="false" data-action="toggleFilters">
+            <span class="filter__value">A to Z</span>
+            <svg class="icon-chevron filter" aria-hidden="true">
+              <use href="/sprite.svg#icon-chevron-down"></use>
+            </svg>
+          </button>
+          <div class="dropdown">
+            <ul class="dropdown-menu is-hidden">
+              <li class="item" data-sort="az">A to Z</li>
+              <li class="item disabled" data-sort="za">Z to A</li>
+              <li class="item disabled" data-sort="priceLow">Less than 10$</li>
+              <li class="item disabled" data-sort="priceHigh">Greater than 10$</li>
+              <li class="item disabled" data-sort="popular">Popular</li>
+              <li class="item disabled" data-sort="unpopular">Not popular</li>
+            </ul>
+          </div>
+        </div>
+      </div>
       <ul class="list-psychologists"></ul>
       <button type="button" class="btn-load-more">Load more</button>
     </div>
+  </div>
   </div>
 </section>

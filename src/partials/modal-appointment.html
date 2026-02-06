@@ -63,13 +63,10 @@
 
     <label class="visually-hidden" for="time">Preferred time</label>
     <input
-  id="time"
-  class="modal__appointment__input__half"
-  type="time"
+  class="modal__appointment__input__half js-time"
+  type="text"
   name="time"
-  min="09:00"
-  max="18:00"
-  step="1800"
+  placeholder="Preferred time"
   required
 />
   </div>
@@ -94,7 +91,6 @@
     name="message"
     placeholder="Comment"
     rows="4"
-    required
   ></textarea>
 </form>
           <button

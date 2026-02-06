@@ -44,6 +44,7 @@
   --color-bg-surface: #f3f3f3;
   --color-bg-dark: #191a15;
   --color-bg-overlay: rgba(25, 26, 21, 0.6);
+  --color-bg-menu: #fff;
 
   /* Borders */
   --color-border-light: rgba(25, 26, 21, 0.1);
