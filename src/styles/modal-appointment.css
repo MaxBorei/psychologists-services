@@ -16,7 +16,9 @@
   padding: 64px;
   border-radius: 30px;
   width: 600px;
-  height: auto;
+  max-height: min(90vh, 800px);
+  overflow: auto;
+  scrollbar-width: none;
   display: flex;
   gap: 40px;
   flex-direction: column;
@@ -103,6 +105,7 @@
   padding: 16px 20px 70px 18px;
   width: 472px;
   height: 116px;
+  resize: none;
 }
 .modal__appointment__btn {
   border-radius: 30px;

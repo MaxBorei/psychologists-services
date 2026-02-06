@@ -276,18 +276,3 @@ menu.addEventListener("click", (e) => {
 
   closeMenu();
 });
-
-// const shevronBtn = document.querySelector(".psychologists__btn__filter");
-// const useEl = shevronBtn.querySelector("use");
-// const filterBtn = document.querySelector("[data-action='toggleFilters']");
-
-// filterBtn.addEventListener("click", () => {
-//   const isExpanded = filterBtn.getAttribute("aria-expanded") === "true";
-
-//   useEl.setAttribute(
-//     "href",
-//     isExpanded
-//       ? "/sprite.svg#icon-chevron-up"
-//       : "/sprite.svg#icon-chevron-down",
-//   );
-// });
