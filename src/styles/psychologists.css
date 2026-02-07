@@ -98,16 +98,32 @@
   gap: 8px;
 }
 
+.heart-icon {
+  background: transparent;
+  border: none;
+  padding: 0;
+}
+
 .ctaIcon_heart {
   height: 26px;
   width: 26px;
   fill: none;
   stroke: var(--color-text-primary);
   stroke-width: 2px;
-  transition: transform 0.3s ease;
+  transition:
+    fill 0.25s ease,
+    stroke 0.25s ease,
+    transform 0.3s ease;
 }
-.ctaIcon_heart:hover {
+
+.heart-icon:hover .ctaIcon_heart {
   transform: scale(1.1);
+}
+
+.heart-icon.is-active .ctaIcon_heart {
+  fill: var(--color-accent);
+  stroke-width: 2px;
+  stroke: var(--color-accent);
 }
 
 .psychologists__card__cta__box {

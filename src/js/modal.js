@@ -43,11 +43,13 @@ function openModal(modal) {
   if (modal.dataset.modal === "appointment") {
     initTimeField(modal);
   }
+  document.body.classList.add("no-scroll");
 }
 
 function closeModal(modal) {
   modal.classList.add("visually-hidden");
   document.body.style.overflow = "";
+  document.body.classList.remove("no-scroll");
 }
 
 function showSuccessMessage(text) {

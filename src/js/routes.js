@@ -1,6 +1,7 @@
 const routes = {
   "/": "hero",
   "/psychologists": "psychologists",
+  "/favorites": "favorites",
 };
 
 function setActiveNav() {
