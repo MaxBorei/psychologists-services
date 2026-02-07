@@ -10,14 +10,13 @@
   background-color: var(--color-accent);
   color: var(--color-text-inverse);
   text-decoration: none;
-  border-radius: 50px;
+  border-radius: 30px;
   padding: clamp(12px, 1.67vw, 14px) clamp(28px, 2.8vw, 40px);
   text-align: center;
   font-weight: var(--fw-regular);
   font-size: var(--fs-16);
   line-height: 1.25;
   letter-spacing: -0.01em;
-  border-radius: 30px;
   transition:
     background-color var(--transition-base),
     color var(--transition-base),
@@ -29,4 +28,10 @@
   line-height: 1.25;
   letter-spacing: -0.01em;
   color: var(--color-text-primary);
+  text-align: center;
+}
+@media screen and (max-width: 768px) {
+  .favorites__empty__text {
+    font-size: var(--fs-18);
+  }
 }

@@ -1,18 +1,36 @@
-const STORAGE_KEY = "favorites";
+import { auth } from "./firebase.js";
+
+const BASE_KEY = "favorites";
+
+function getUid() {
+  return auth?.currentUser?.uid || null;
+}
+
+function getStorageKey() {
+  const uid = getUid();
+  return uid ? `${BASE_KEY}:${uid}` : null;
+}
 
 export function getFavorites() {
+  const key = getStorageKey();
+  if (!key) return [];
   try {
-    return JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+    return JSON.parse(localStorage.getItem(key)) || [];
   } catch {
     return [];
   }
 }
 
 export function setFavorites(items) {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(items));
+  const key = getStorageKey();
+  if (!key) return;
+  localStorage.setItem(key, JSON.stringify(items));
 }
 
 export function toggleFavorite(item) {
+  const key = getStorageKey();
+  if (!key) return false;
+
   const favorites = getFavorites();
   const index = favorites.findIndex((f) => f.id === item.id);
 
@@ -33,21 +51,20 @@ export function syncFavoriteButtons(container) {
   const favorites = getFavorites();
   const favSet = new Set(favorites.map((f) => f.id));
 
-  const cards = container.querySelectorAll(
-    ".psychologists__card__box[data-id]",
-  );
-  cards.forEach((card) => {
-    const id = card.dataset.id;
-    const btn = card.querySelector('[data-action="add-to-favorites"]');
-    if (!btn) return;
+  container
+    .querySelectorAll(".psychologists__card__box[data-id]")
+    .forEach((card) => {
+      const id = card.dataset.id;
+      const btn = card.querySelector('[data-action="add-to-favorites"]');
+      if (!btn) return;
 
-    const active = favSet.has(id);
-    btn.classList.toggle("is-active", active);
-    btn.setAttribute(
-      "aria-label",
-      active ? "Remove from favorites" : "Add to favorites",
-    );
-  });
+      const active = favSet.has(id);
+      btn.classList.toggle("is-active", active);
+      btn.setAttribute(
+        "aria-label",
+        active ? "Remove from favorites" : "Add to favorites",
+      );
+    });
 }
 
 export function renderFavoritesList() {
@@ -57,7 +74,7 @@ export function renderFavoritesList() {
   const favorites = getFavorites();
 
   if (favorites.length === 0) {
-    list.innerHTML = `<div class="favorites__empty"><p class="favorites__empty__text">No favorites yet</p><a class="favorites-empty" data-link href="./psychologists">Browse psychologists</a></div>`;
+    list.innerHTML = `<div class="favorites__empty"><p class="favorites__empty__text">Save psychologists you like to see them here</p><a class="favorites-empty" data-link href="/psychologists">Browse psychologists</a></div>`;
     return;
   }
 
@@ -105,6 +122,7 @@ function favoriteCardMarkup(p) {
                     </span>
                     <p class="psychologists__text__metaItem">Rating: ${rating ?? "—"}</p>
                   </div>
+
                   <div class="metaItem">
                     <p class="psychologists__text__metaItem">
                       Price / 1 hour: <span class="price_span">${price_per_hour ?? "—"}$</span>

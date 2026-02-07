@@ -116,10 +116,6 @@
     transform 0.3s ease;
 }
 
-.heart-icon:hover .ctaIcon_heart {
-  transform: scale(1.1);
-}
-
 .heart-icon.is-active .ctaIcon_heart {
   fill: var(--color-accent);
   stroke-width: 2px;

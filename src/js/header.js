@@ -1,3 +1,15 @@
+import { auth } from "./firebase.js";
+
+document.addEventListener("click", (e) => {
+  const link = e.target.closest('a[data-link][href*="favorites"]');
+  if (!link) return;
+
+  if (!auth.currentUser) {
+    e.preventDefault();
+    document.querySelector('[data-modal-open="register"]')?.click();
+  }
+});
+
 document.addEventListener("DOMContentLoaded", () => {
   const burgerBtn = document.querySelector(".burger-menu");
   const closeBtn = document.querySelector(".mobile-close");

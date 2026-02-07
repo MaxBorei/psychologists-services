@@ -1,3 +1,5 @@
+import { initHeaderAuth } from "./js/headerAuth.js";
+
 import "./style.css";
 
 import "./js/routes.js";
@@ -9,3 +11,4 @@ import "./js/mobile-menu.js";
 import "./js/modal.js";
 import "./js/favorites.js";
 import "./js/favorites-page.js";
+document.addEventListener("DOMContentLoaded", initHeaderAuth);
