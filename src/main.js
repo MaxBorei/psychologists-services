@@ -10,5 +10,5 @@ import "./js/getPsychologists.js";
 import "./js/mobile-menu.js";
 import "./js/modal.js";
 import "./js/favorites.js";
-import "./js/favorites-page.js";
+import "./js/favorites-protect.js";
 document.addEventListener("DOMContentLoaded", initHeaderAuth);

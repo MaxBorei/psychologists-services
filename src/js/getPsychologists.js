@@ -39,6 +39,7 @@ function renderPsychologists(items, replace = false) {
   else list.insertAdjacentHTML("beforeend", markup);
 
   syncFavoriteButtons(list);
+  syncAppointmentButtons(list);
 }
 
 function psychologistCardMarkup(p) {
@@ -141,6 +142,7 @@ function psychologistCardMarkup(p) {
               <li class="reviews-actions">
                 <button
                   class="btn_card_rewies"
+                  data-action="add-appointment"
                   data-modal-open="appointment"
                   data-name="${name ?? ""}"
                   data-avatar="${avatar_url ?? ""}"
@@ -255,6 +257,7 @@ document.addEventListener("click", (e) => {
 
     renderFavoritesList();
     syncFavoriteButtons(document.querySelector(".list-psychologists"));
+    syncAppointmentButtons(document.querySelector(".list-psychologists"));
     return;
   }
 

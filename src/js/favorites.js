@@ -67,6 +67,26 @@ export function syncFavoriteButtons(container) {
     });
 }
 
+export function syncAppointmentButtons(container) {
+  if (!container) return;
+
+  const isAuthed = !!auth.currentUser;
+
+  container
+    .querySelectorAll(".psychologists__card__box[data-id]")
+    .forEach((card) => {
+      const btn = card.querySelector('[data-action="add-appointment"]');
+      if (!btn) return;
+
+      btn.disabled = !isAuthed;
+      btn.classList.toggle("is-disabled", !isAuthed);
+      btn.setAttribute(
+        "aria-label",
+        isAuthed ? "Make an appointment" : "Log in to make an appointment",
+      );
+    });
+}
+
 export function renderFavoritesList() {
   const list = document.querySelector(".favorites-list");
   if (!list) return;

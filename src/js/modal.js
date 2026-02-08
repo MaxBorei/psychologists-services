@@ -50,6 +50,10 @@ function closeModal(modal) {
   modal.classList.add("visually-hidden");
   document.body.style.overflow = "";
   document.body.classList.remove("no-scroll");
+
+  if (modal?.dataset?.modal === "register") {
+    document.dispatchEvent(new CustomEvent("registerModal:closed"));
+  }
 }
 
 function showSuccessMessage(text) {

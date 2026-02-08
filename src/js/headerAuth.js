@@ -3,6 +3,7 @@ import {
   signOut,
 } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 import { auth } from "./firebase.js";
+import { syncAppointmentButtons } from "./favorites.js";
 
 export function initHeaderAuth() {
   const header = document.querySelector(".header");
@@ -10,15 +11,14 @@ export function initHeaderAuth() {
   if (!header) return;
 
   onAuthStateChanged(auth, (user) => {
-    if (user) {
-      header.classList.add("is-auth");
-      if (nameEl) {
-        nameEl.textContent = user.displayName || user.email || "Пользователь";
-      }
-    } else {
-      header.classList.remove("is-auth");
-      if (nameEl) nameEl.textContent = "";
+    header.classList.toggle("is-auth", !!user);
+
+    if (nameEl) {
+      nameEl.textContent = user ? user.displayName || user.email : "";
     }
+
+    syncAppointmentButtons(document.querySelector(".list-psychologists"));
+    syncAppointmentButtons(document.querySelector(".favorites-list"));
   });
 }
 

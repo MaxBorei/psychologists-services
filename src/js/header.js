@@ -1,29 +1,52 @@
+import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 import { auth } from "./firebase.js";
 
-document.addEventListener("click", (e) => {
-  const link = e.target.closest('a[data-link][href*="favorites"]');
-  if (!link) return;
 
+function openRegisterModal() {
+  document.querySelector('[data-modal-open="register"]')?.click();
+}
+
+let isAuthed = false;
+
+onAuthStateChanged(auth, (user) => {
+  isAuthed = !!user;
+});
+
+document.addEventListener(
+  "click",
+  (e) => {
+    const favLink = e.target.closest('a[data-link="favorites"]');
+    if (!favLink) return;
+
+    if (!isAuthed) {
+      e.preventDefault();
+      e.stopImmediatePropagation();
+      openRegisterModal();
+    }
+  },
+  true,
+);
+
+document.addEventListener("registerModal:closed", () => {
+  
   if (!auth.currentUser) {
-    e.preventDefault();
-    document.querySelector('[data-modal-open="register"]')?.click();
+    window.location.assign("/psychologists");
   }
 });
 
 document.addEventListener("DOMContentLoaded", () => {
   const burgerBtn = document.querySelector(".burger-menu");
   const closeBtn = document.querySelector(".mobile-close");
-  const mobileMenu = document.querySelector(".mobile-menu");
+  const mobileMenu = document.querySelector(".mobile-drawer");
 
   if (!burgerBtn || !closeBtn || !mobileMenu) return;
 
   const openMenu = () => {
     mobileMenu.style.transform = "translateX(0)";
     mobileMenu.style.visibility = "visible";
+    mobileMenu.setAttribute("aria-hidden", "false");
 
-    burgerBtn.classList.add("is-open");
     burgerBtn.setAttribute("aria-expanded", "true");
-
     burgerBtn.style.display = "none";
     closeBtn.style.display = "flex";
 
@@ -33,10 +56,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const closeMenu = () => {
     mobileMenu.style.transform = "translateX(100%)";
     mobileMenu.style.visibility = "hidden";
+    mobileMenu.setAttribute("aria-hidden", "true");
 
-    burgerBtn.classList.remove("is-open");
     burgerBtn.setAttribute("aria-expanded", "false");
-
     burgerBtn.style.display = "flex";
     closeBtn.style.display = "none";
 

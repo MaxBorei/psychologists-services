@@ -265,6 +265,13 @@
   letter-spacing: -0.01em;
   color: #fbfbfb;
 }
+.btn_card_rewies.is-disabled,
+.btn_card_rewies:disabled {
+  background: #d9d9d9;
+  color: #9b9b9b;
+  cursor: not-allowed;
+  opacity: 0.8;
+}
 .icon-chevron {
   width: 20px;
   height: 20px;

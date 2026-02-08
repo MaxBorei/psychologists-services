@@ -6,11 +6,16 @@ function openRegisterModal() {
   document.querySelector('[data-modal-open="register"]')?.click();
 }
 
+function isFavoritesRoute() {
+  return window.location.pathname === "/favorites";
+}
+
 document.addEventListener("DOMContentLoaded", () => {
-  const favoritesList = document.querySelector(".favorites-list");
-  if (!favoritesList) return;
+  if (!document.querySelector(".favorites-list")) return;
 
   onAuthStateChanged(auth, (user) => {
+    if (!isFavoritesRoute()) return;
+
     if (!user) {
       openRegisterModal();
       return;
