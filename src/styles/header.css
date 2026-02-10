@@ -196,6 +196,10 @@
     display: none;
   }
 
+  .header.is-auth .header__inner > .header-auth {
+    display: none;
+  }
+
   .menu-buttons {
     display: flex;
     align-items: center;
@@ -299,6 +303,12 @@
     width: 100%;
   }
   .header-nav__link.is-active::after {
+    display: none;
+  }
+  .header.is-auth .header-auth.header-auth--mobile {
+    display: flex;
+  }
+  .header.is-auth .header-actions--mobile > .btn {
     display: none;
   }
 }

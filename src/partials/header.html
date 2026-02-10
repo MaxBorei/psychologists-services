@@ -98,6 +98,11 @@
             >Psychologists</a
           >
         </li>
+        <li class="nav-item">
+          <a href="/favorites" data-link="favorites" class="header-nav__link"
+            >Favorites</a
+          >
+        </li>
       </ul>
     </nav>
 
@@ -112,6 +117,24 @@
         <span class="logo__accent">psychologists</span
         ><span class="logo__point">.</span>services
       </a>
+
+      <div class="header-auth header-auth--mobile">
+        <div class="header-auth-avatar_box">
+          <div class="header-auth-icon">
+            <svg class="auth-icon" aria-hidden="true">
+              <use href="/sprite.svg#icon-user"></use>
+            </svg>
+          </div>
+          <p class="header-auth-name" data-user-name></p>
+        </div>
+        <button
+          type="button"
+          class="btn btn-secondary"
+          data-modal-open="logout"
+        >
+          Log out
+        </button>
+      </div>
     </div>
   </div>
 </header>

@@ -4,6 +4,7 @@ import {
   toggleFavorite,
   syncFavoriteButtons,
   renderFavoritesList,
+  syncAppointmentButtons,
 } from "./favorites";
 
 axios.defaults.baseURL =
@@ -91,7 +92,7 @@ function psychologistCardMarkup(p) {
                   </div>
                 </div>
 
-                <button class="heart-icon" data-action="add-to-favorites" aria-label="Add to favorites">
+                <button class="heart-icon is-active" data-action="add-to-favorites" aria-label="Add to favorites">
                   <svg class="ctaIcon_heart">
                     <use href="/sprite.svg#icon-heart"></use>
                   </svg>
@@ -141,7 +142,8 @@ function psychologistCardMarkup(p) {
 
               <li class="reviews-actions">
                 <button
-                  class="btn_card_rewies"
+                  class="btn_card_rewies is-disabled"
+                  disabled
                   data-action="add-appointment"
                   data-modal-open="appointment"
                   data-name="${name ?? ""}"

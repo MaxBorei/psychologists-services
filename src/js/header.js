@@ -1,7 +1,6 @@
 import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 import { auth } from "./firebase.js";
 
-
 function openRegisterModal() {
   document.querySelector('[data-modal-open="register"]')?.click();
 }
@@ -28,7 +27,6 @@ document.addEventListener(
 );
 
 document.addEventListener("registerModal:closed", () => {
-  
   if (!auth.currentUser) {
     window.location.assign("/psychologists");
   }

@@ -48,6 +48,7 @@ export function toggleFavorite(item) {
 export function syncFavoriteButtons(container) {
   if (!container) return;
 
+  const isAuthed = !!auth.currentUser;
   const favorites = getFavorites();
   const favSet = new Set(favorites.map((f) => f.id));
 
@@ -57,6 +58,15 @@ export function syncFavoriteButtons(container) {
       const id = card.dataset.id;
       const btn = card.querySelector('[data-action="add-to-favorites"]');
       if (!btn) return;
+
+      if (!isAuthed) {
+        btn.disabled = true;
+        btn.classList.remove("is-active");
+        btn.setAttribute("aria-label", "Log in to add to favorites");
+        return;
+      }
+
+      btn.disabled = false;
 
       const active = favSet.has(id);
       btn.classList.toggle("is-active", active);
