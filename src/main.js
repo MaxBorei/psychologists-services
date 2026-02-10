@@ -11,4 +11,6 @@ import "./js/mobile-menu.js";
 import "./js/modal.js";
 import "./js/favorites.js";
 import "./js/favorites-protect.js";
+import "./js/validation.js";
+import "./js/headerAuth.js";
 document.addEventListener("DOMContentLoaded", initHeaderAuth);

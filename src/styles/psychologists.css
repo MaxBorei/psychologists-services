@@ -346,3 +346,27 @@
 .dropdown-menu.is-hidden {
   display: none;
 }
+
+@media screen and (max-width: 767px) {
+  .psychologists__card__box {
+    flex-direction: column;
+    gap: 12px;
+    position: relative;
+  }
+  .psychologists__card__content {
+    gap: 6px;
+  }
+  .psychlogists__card_pills {
+    height: auto;
+  }
+  .heart-icon {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+  }
+  .psychologists__card__cta__box {
+    flex-direction: column;
+    gap: 12px;
+    align-items: stretch;
+  }
+}

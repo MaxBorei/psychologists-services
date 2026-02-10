@@ -1,13 +1,18 @@
 import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 import { auth } from "./firebase.js";
-import { renderFavoritesList } from "./favorites.js";
+import {
+  renderFavoritesList,
+  syncAppointmentButtons,
+  syncFavoriteButtons,
+} from "./favorites.js";
 
 function openRegisterModal() {
   document.querySelector('[data-modal-open="register"]')?.click();
 }
 
 function isFavoritesRoute() {
-  return window.location.pathname === "/favorites";
+  const p = window.location.pathname.replace(/\/+$/, "");
+  return p.endsWith("/favorites") || p.endsWith("/favorites.html");
 }
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -22,5 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     renderFavoritesList();
+    syncFavoriteButtons(document.querySelector(".favorites-list"));
+    syncAppointmentButtons(document.querySelector(".favorites-list"));
   });
 });

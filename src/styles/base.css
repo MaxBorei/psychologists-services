@@ -9,14 +9,14 @@
   --fw-semibold: 600;
   --fw-bold: 700;
 
-  --fs-12: 12px;
-  --fs-14: 14px;
-  --fs-16: 16px;
-  --fs-18: 18px;
-  --fs-20: 20px;
-  --fs-24: 24px;
-  --fs-40: 40px;
-  --fs-80: 80px;
+  --fs-12: clamp(10px, 0.7vw, 12px);
+  --fs-14: clamp(12px, 0.9vw, 14px);
+  --fs-16: clamp(14px, 1vw, 16px);
+  --fs-18: clamp(15px, 1.1vw, 18px);
+  --fs-20: clamp(16px, 1.3vw, 20px);
+  --fs-24: clamp(18px, 1.6vw, 24px);
+  --fs-40: clamp(28px, 3vw, 40px);
+  --fs-80: clamp(42px, 6vw, 80px);
 
   /* Motion */
   --transition-fast: 150ms ease;
@@ -133,6 +133,17 @@ input,
 textarea,
 select {
   font: inherit;
+}
+
+.is-invalid {
+  outline: 2px solid #e74c3c;
+}
+
+.form-error {
+  margin: 6px 0 0;
+  font-size: 12px;
+  line-height: 1.2;
+  color: #e74c3c;
 }
 
 /* Accessibility */

@@ -7,16 +7,16 @@ import { syncAppointmentButtons, syncFavoriteButtons } from "./favorites.js";
 
 export function initHeaderAuth() {
   const header = document.querySelector(".header");
-  const nameEl = document.querySelector("[data-user-name]");
   if (!header) return;
 
   onAuthStateChanged(auth, (user) => {
     console.log("AUTH STATE:", user ? "LOGGED IN" : "LOGGED OUT", user?.uid);
+
     header.classList.toggle("is-auth", !!user);
 
-    if (nameEl) {
-      nameEl.textContent = user ? user.displayName || user.email : "";
-    }
+    document.querySelectorAll("[data-user-name]").forEach((el) => {
+      el.textContent = user ? user.displayName || user.email || "User" : "";
+    });
 
     const list = document.querySelector(".list-psychologists");
     const favList = document.querySelector(".favorites-list");

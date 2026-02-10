@@ -27,9 +27,11 @@ document.addEventListener(
 );
 
 document.addEventListener("registerModal:closed", () => {
-  if (!auth.currentUser) {
+  setTimeout(() => {
+    if (auth.currentUser) return;
+    if (window.location.pathname.includes("psychologists")) return;
     window.location.assign("/psychologists");
-  }
+  }, 0);
 });
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -45,7 +47,6 @@ document.addEventListener("DOMContentLoaded", () => {
     mobileMenu.setAttribute("aria-hidden", "false");
 
     burgerBtn.setAttribute("aria-expanded", "true");
-    burgerBtn.style.display = "none";
     closeBtn.style.display = "flex";
 
     document.body.style.overflow = "hidden";
