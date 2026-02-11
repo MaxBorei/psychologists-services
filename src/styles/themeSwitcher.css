@@ -11,7 +11,7 @@
   gap: clamp(4px, 0.6vw, 6px);
   padding: clamp(6px, 0.8vw, 8px);
 
-  border-radius: var(--radius-16);
+  border-radius: 16px;
   border: 1px solid var(--color-border-light);
 
   background: linear-gradient(
@@ -27,7 +27,7 @@
   padding: 0;
 
   border: 0;
-  border-radius: var(--radius-8);
+  border-radius: 8px;
   background: rgba(246, 93, 93, 0.04);
   outline: none;
 
@@ -61,7 +61,7 @@
 .iconWrap {
   width: clamp(18px, 1.6vw, 20px);
   height: clamp(18px, 1.6vw, 20px);
-  border-radius: var(--radius-8);
+  border-radius: 8px;
   border: 1px solid rgba(0, 0, 0, 0.08);
 
   display: flex;
