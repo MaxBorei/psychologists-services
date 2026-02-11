@@ -79,3 +79,15 @@ document.addEventListener("DOMContentLoaded", () => {
     if (e.key === "Escape") closeMenu();
   });
 });
+
+export function setHeaderHeight() {
+  const header = document.querySelector("header");
+  if (!header) return;
+  document.documentElement.style.setProperty(
+    "--header-h",
+    `${header.offsetHeight}px`,
+  );
+}
+
+setHeaderHeight();
+window.addEventListener("resize", setHeaderHeight);

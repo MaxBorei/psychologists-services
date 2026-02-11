@@ -1,6 +1,7 @@
 .hero {
+  min-height: calc(100svh - var(--header-h, 0px));
   padding: clamp(64px, 8.75vw, 126px) 0 clamp(80px, 9.72vw, 140px);
-  position: relative;
+  overflow: hidden;
 }
 
 .hero__content {
@@ -65,12 +66,14 @@
   height: 16px;
   display: block;
 }
-
+.hero .container {
+  position: relative;
+}
 .hero__image {
   width: clamp(280px, 32.22vw, 464px);
   height: clamp(320px, 36.53vw, 526px);
   position: absolute;
-  top: clamp(40px, 5.42vw, 78px);
+  top: clamp(-30px, 3.33vw, -48px);
   right: clamp(16px, 8.75vw, 126px);
   border-radius: 10px;
   z-index: 97;
@@ -80,7 +83,7 @@
   width: clamp(40px, 4.1vw, 59px);
   height: clamp(40px, 4.1vw, 59px);
   position: absolute;
-  top: clamp(60px, 8.06vw, 116px);
+  top: clamp(0px, -0.69vw, -10px);
   right: clamp(24px, 5.83vw, 84px);
   z-index: 98;
 }
@@ -89,7 +92,7 @@
   width: clamp(32px, 2.78vw, 40px);
   height: clamp(32px, 2.78vw, 40px);
   position: absolute;
-  top: clamp(140px, 18.26vw, 263px);
+  top: clamp(80px, 10.63vw, 153px);
   right: clamp(220px, 40.42vw, 582px);
   background: #4535af;
   border-radius: 10px;
@@ -100,25 +103,24 @@
   z-index: 98;
 }
 
-.block__icon {
-  width: clamp(10px, 0.69vw, 10px);
-  height: clamp(14px, 1.18vw, 17px);
-  fill: #fff;
-  transform: rotate(-65deg);
-}
-
 .hero__badge {
   width: clamp(120px, 21.6vw, 311px);
   height: clamp(70px, 8.19vw, 118px);
   padding: clamp(20px, 2.22vw, 32px);
   position: absolute;
-  top: clamp(220px, 28.54vw, 411px);
+  top: clamp(220px, 19.79vw, 285px);
   right: clamp(120px, 26.53vw, 382px);
   display: flex;
-  gap: 16px;
+  gap: clamp(5px, 1.11vw, 16px);
   background: var(--color-accent);
   border-radius: 20px;
   z-index: 98;
+}
+.block__icon {
+  width: clamp(10px, 0.69vw, 10px);
+  height: clamp(14px, 1.18vw, 17px);
+  fill: #fff;
+  transform: rotate(-65deg);
 }
 
 .badge__box {
@@ -130,7 +132,7 @@
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  padding: 12px;
+  padding: clamp(5px, 1.11vw, 16px);
 }
 
 .badge__icon {
@@ -165,6 +167,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    min-height: inherit;
   }
 
   .hero__content {

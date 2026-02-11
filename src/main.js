@@ -13,4 +13,5 @@ import "./js/favorites.js";
 import "./js/favorites-protect.js";
 import "./js/validation.js";
 import "./js/headerAuth.js";
+import "./js/themeSwitcher.js";
 document.addEventListener("DOMContentLoaded", initHeaderAuth);

@@ -20,6 +20,31 @@
     <include src="./src/partials/header.html"></include>
 
     <main>
+      <div class="floating">
+        <button
+          type="button"
+          class="item span iconWrap"
+          aria-label="Orange theme"
+        >
+          <span aria-hidden="true" class="iconDot orange"></span>
+        </button>
+        <button
+          type="button"
+          class="item span iconWrap"
+          aria-label="Blue theme"
+        >
+          <span aria-hidden="true" class="iconDot blue"></span>
+        </button>
+        <button
+          type="button"
+          class="item span iconWrap"
+          data-active="true"
+          aria-label="Green theme"
+        >
+          <span aria-hidden="true" class="iconDot green"></span>
+        </button>
+      </div>
+
       <include src="./src/partials/hero.html"></include>
       <include src="./src/partials/favorites.html"></include>
       <include src="./src/partials/psychologists.html"></include>
