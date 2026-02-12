@@ -126,10 +126,9 @@ function validatePhoneUA(form, fieldName = "phone") {
 }
 
 // ===== attach validation to any form =====
-function attachValidation(form, rules) {
+export function attachValidation(form, rules) {
   if (!form) return;
 
-  // чистимо помилку при введенні
   form.addEventListener("input", (e) => {
     const el = e.target;
     if (
@@ -141,20 +140,15 @@ function attachValidation(form, rules) {
   });
 
   form.addEventListener("submit", (e) => {
-    // спочатку прибираємо старі помилки
     form.querySelectorAll("input, textarea, select").forEach(clearError);
 
     let ok = true;
 
-    // required поля
     for (const r of rules.required ?? []) {
       ok = validateRequired(form, r.name, r.label) && ok;
     }
 
-    // email
     if (rules.email) ok = validateEmail(form, rules.email) && ok;
-
-    // password
     if (rules.passwordMin) {
       ok =
         validatePasswordMin(
@@ -163,23 +157,12 @@ function attachValidation(form, rules) {
           rules.passwordMin.min,
         ) && ok;
     }
-
-    // phone
     if (rules.phone) ok = validatePhoneUA(form, rules.phone) && ok;
 
     if (!ok) {
       e.preventDefault();
-      // фокус на перше невалідне поле
-      const firstInvalid = form.querySelector(".is-invalid");
-      firstInvalid?.focus();
-      return;
+      form.querySelector(".is-invalid")?.focus();
     }
-
-    // якщо все ок — тут ти можеш робити свій submit/логіку
-    // (якщо форма має відправлятись звичайно — просто не preventDefault)
-    // e.preventDefault();
-    // const data = readFormValues(form);
-    // console.log("submit", data);
   });
 }
 

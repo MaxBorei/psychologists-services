@@ -1,3 +1,5 @@
+import { attachValidation } from "./validation";
+
 document.addEventListener("click", (e) => {
   const btn = e.target.closest(".password-toggle");
   if (!btn) return;
@@ -14,6 +16,50 @@ document.addEventListener("click", (e) => {
   icon.setAttribute("href", href);
   icon.setAttribute("xlink:href", href);
 });
+
+function bindValidationOnce(modal) {
+  if (!modal || modal.dataset.validationBound === "true") return;
+  modal.dataset.validationBound = "true";
+
+  const loginForm = modal.querySelector(".modal__login__form");
+  if (loginForm) {
+    attachValidation(loginForm, {
+      required: [
+        { name: "email", label: "Email" },
+        { name: "password", label: "Пароль" },
+      ],
+      email: "email",
+      passwordMin: { name: "password", min: 6 },
+    });
+  }
+
+  const registerForm = modal.querySelector(".modal__register__form");
+  if (registerForm) {
+    attachValidation(registerForm, {
+      required: [
+        { name: "name", label: "Імʼя" },
+        { name: "email", label: "Email" },
+        { name: "password", label: "Пароль" },
+      ],
+      email: "email",
+      passwordMin: { name: "password", min: 6 },
+    });
+  }
+
+  const appointmentForm = modal.querySelector(".modal__appointment__form");
+  if (appointmentForm) {
+    attachValidation(appointmentForm, {
+      required: [
+        { name: "name", label: "Імʼя" },
+        { name: "phone", label: "Телефон" },
+        { name: "time", label: "Час" },
+        { name: "email", label: "Email" },
+      ],
+      email: "email",
+      phone: "phone",
+    });
+  }
+}
 
 function initTimeField(scope = document) {
   const input = scope.querySelector(".js-time");
@@ -39,6 +85,9 @@ function initTimeField(scope = document) {
 function openModal(modal) {
   modal.classList.remove("visually-hidden");
   document.body.style.overflow = "hidden";
+  document.body.classList.add("no-scroll");
+
+  bindValidationOnce(modal);
 
   if (modal.dataset.modal === "appointment") {
     initTimeField(modal);
@@ -114,6 +163,11 @@ window.addEventListener("keydown", (e) => {
 document.addEventListener("submit", (e) => {
   const form = e.target.closest("#appointment-form");
   if (!form) return;
+
+  if (form.querySelector(".is-invalid")) {
+    e.preventDefault();
+    return;
+  }
 
   e.preventDefault();
 
