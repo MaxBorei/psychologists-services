@@ -23,32 +23,38 @@
         class="modal__register__form"
         novalidate
       >
-        <input
-          class="modal__register__input"
-          type="text"
-          name="name"
-          placeholder="Name"
-          autocomplete="name"
-          required
-        />
-        <input
-          class="modal__register__input"
-          type="email"
-          name="email"
-          placeholder="Email"
-          autocomplete="email"
-          required
-        />
-
-        <div class="password-field">
+        <div class="field">
           <input
             class="modal__register__input"
-            type="password"
-            name="password"
-            placeholder="Password"
-            autocomplete="current-password"
+            type="text"
+            name="name"
+            placeholder="Name"
+            autocomplete="name"
             required
           />
+        </div>
+        <div class="field">
+          <input
+            class="modal__register__input"
+            type="email"
+            name="email"
+            placeholder="Email"
+            autocomplete="email"
+            required
+          />
+        </div>
+
+        <div class="field">
+          <div class="password-field">
+            <input
+              class="modal__register__input"
+              type="password"
+              name="password"
+              placeholder="Password"
+              autocomplete="current-password"
+              required
+            />
+          </div>
           <button type="button" class="password-toggle">
             <svg class="icon-eye">
               <use href="/sprite.svg#icon-eye-off"></use>

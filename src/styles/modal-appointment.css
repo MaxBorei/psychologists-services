@@ -9,6 +9,21 @@
   justify-content: center;
 }
 
+.field {
+  position: relative;
+  margin-bottom: 22px;
+}
+
+.field .form-error {
+  position: absolute;
+  left: 0;
+  top: calc(100% + 4px);
+  font-size: 12px;
+  line-height: 1;
+  color: #e74c3c;
+  white-space: nowrap;
+}
+
 .modal__appointment {
   position: relative;
 }

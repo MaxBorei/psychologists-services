@@ -16,7 +16,7 @@
   padding: 64px;
   border-radius: 30px;
   width: 566px;
-  height: 580px;
+  height: auto;
   display: flex;
   gap: 40px;
   flex-direction: column;
@@ -57,7 +57,7 @@
 }
 .modal__register__form {
   width: 438px;
-  height: 192px;
+  height: auto;
   display: flex;
   flex-direction: column;
   gap: 18px;
@@ -157,7 +157,7 @@
   }
   .modal__register__form {
     width: 290px;
-    height: 192px;
+    height: auto;
     gap: 14px;
   }
   .modal__register__input {

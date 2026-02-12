@@ -42,20 +42,20 @@ function clearFormError(formEl) {
   el.style.display = "none";
 }
 
-function mapAuthError(err) {
-  const code = err?.code || "";
-  if (code === "auth/email-already-in-use")
-    return "This email is already in use.";
-  if (code === "auth/invalid-email") return "Invalid email address.";
-  if (code === "auth/weak-password")
-    return "Password should be at least 6 characters.";
-  if (code === "auth/user-not-found") return "No user found with this email.";
-  if (code === "auth/wrong-password") return "Incorrect password.";
-  if (code === "auth/invalid-credential") return "Invalid email or password.";
-  if (code === "auth/too-many-requests")
-    return "Too many attempts. Try again later.";
-  return "Something went wrong. Please try again.";
-}
+// function mapAuthError(err) {
+//   const code = err?.code || "";
+//   if (code === "auth/email-already-in-use")
+//     return "This email is already in use.";
+//   if (code === "auth/invalid-email") return "Invalid email address.";
+//   if (code === "auth/weak-password")
+//     return "Password should be at least 6 characters.";
+//   if (code === "auth/user-not-found") return "No user found with this email.";
+//   if (code === "auth/wrong-password") return "Incorrect password.";
+//   if (code === "auth/invalid-credential") return "Invalid email or password.";
+//   if (code === "auth/too-many-requests")
+//     return "Too many attempts. Try again later.";
+//   return "Something went wrong. Please try again.";
+// }
 
 const regForm = document.querySelector(".modal__register__form");
 
@@ -83,7 +83,6 @@ regForm?.addEventListener("submit", async (e) => {
     closeCurrentModalByForm(regForm);
   } catch (err) {
     console.error(err);
-    showFormError(regForm, mapAuthError(err));
   }
 });
 
@@ -102,6 +101,5 @@ loginForm?.addEventListener("submit", async (e) => {
     closeCurrentModalByForm(loginForm);
   } catch (err) {
     console.error(err);
-    showFormError(loginForm, mapAuthError(err));
   }
 });

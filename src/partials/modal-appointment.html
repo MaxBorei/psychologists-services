@@ -37,59 +37,69 @@
         class="modal__appointment__form"
         novalidate
       >
-        <label class="visually-hidden" for="name">Name</label>
-        <input
-          id="name"
-          class="modal__appointment__input"
-          type="text"
-          name="name"
-          placeholder="Name"
-          autocomplete="name"
-          required
-        />
-
-        <div class="modal__appointment__input__box">
-          <label class="visually-hidden" for="phone">Phone</label>
+        <div class="field">
+          <label class="visually-hidden" for="name">Name</label>
           <input
-            id="phone"
-            class="modal__appointment__input__half"
-            type="tel"
-            name="phone"
-            placeholder="+380"
-            autocomplete="tel"
-            required
-          />
-
-          <label class="visually-hidden" for="time">Preferred time</label>
-          <input
-            id="time"
-            class="modal__appointment__input__half js-time"
+            id="name"
+            class="modal__appointment__input"
             type="text"
-            name="time"
-            placeholder="Preferred time"
+            name="name"
+            placeholder="Name"
+            autocomplete="name"
             required
           />
         </div>
 
-        <label class="visually-hidden" for="email">Email</label>
-        <input
-          id="email"
-          class="modal__appointment__input"
-          type="email"
-          name="email"
-          placeholder="Email"
-          autocomplete="email"
-          required
-        />
+        <div class="modal__appointment__input__box">
+          <div class="field">
+            <label class="visually-hidden" for="phone">Phone</label>
+            <input
+              id="phone"
+              class="modal__appointment__input__half"
+              type="tel"
+              name="phone"
+              placeholder="+380"
+              autocomplete="tel"
+              required
+            />
+          </div>
 
-        <label class="visually-hidden" for="comment">Comment</label>
-        <textarea
-          id="comment"
-          class="modal__appointment__textarea"
-          name="message"
-          placeholder="Comment"
-          rows="4"
-        ></textarea>
+          <div class="field">
+            <label class="visually-hidden" for="time">Preferred time</label>
+            <input
+              id="time"
+              class="modal__appointment__input__half js-time"
+              type="text"
+              name="time"
+              placeholder="Preferred time"
+              required
+            />
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="visually-hidden" for="email">Email</label>
+          <input
+            id="email"
+            class="modal__appointment__input"
+            type="email"
+            name="email"
+            placeholder="Email"
+            autocomplete="email"
+            required
+          />
+        </div>
+
+        <div class="field">
+          <label class="visually-hidden" for="comment">Comment</label>
+          <textarea
+            id="comment"
+            class="modal__appointment__textarea"
+            name="message"
+            placeholder="Comment"
+            rows="4"
+          ></textarea>
+        </div>
       </form>
       <button
         form="appointment-form"

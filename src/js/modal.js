@@ -95,7 +95,15 @@ function openModal(modal) {
   document.body.classList.add("no-scroll");
 }
 
+function resetModalErrors(modal) {
+  modal
+    .querySelectorAll(".is-invalid")
+    .forEach((el) => el.classList.remove("is-invalid"));
+  modal.querySelectorAll(".form-error").forEach((err) => err.remove());
+}
+
 function closeModal(modal) {
+  resetModalErrors(modal);
   modal.classList.add("visually-hidden");
   document.body.style.overflow = "";
   document.body.classList.remove("no-scroll");

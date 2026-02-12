@@ -16,7 +16,7 @@
   padding: 64px;
   border-radius: 30px;
   width: 565px;
-  height: 509px;
+  height: auto;
   display: flex;
   gap: 40px;
   flex-direction: column;
@@ -57,7 +57,7 @@
 }
 .modal__login__form {
   width: 438px;
-  height: 122px;
+  height: auto;
   display: flex;
   flex-direction: column;
   gap: 18px;
