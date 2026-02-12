@@ -99,9 +99,24 @@
 }
 
 .heart-icon {
+  width: 40px;
+  height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+}
+
+.psychologists__content__cta,
+.psychologists__card__metaItem__box,
+.heart-icon {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.psychologists__content__cta:active,
+.psychologists__card__metaItem__box:active,
+.heart-icon:active {
   background: transparent;
-  border: none;
-  padding: 0;
 }
 
 .ctaIcon_heart {

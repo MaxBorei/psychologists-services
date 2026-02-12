@@ -125,7 +125,7 @@
     width: 320px;
     height: auto;
     display: flex;
-    gap: 24px;
+    gap: 16px;
     flex-direction: column;
     background: var(--color-bg-page);
   }
@@ -154,7 +154,7 @@
   }
   .modal__login__form {
     width: 290px;
-    height: 192px;
+    height: auto;
     gap: 14px;
   }
   .modal__login__input {
