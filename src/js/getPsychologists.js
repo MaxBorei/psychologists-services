@@ -141,16 +141,18 @@ function psychologistCardMarkup(p) {
                 .join("")}
 
               <li class="reviews-actions">
-                <button
-                  class="btn_card_rewies is-disabled"
-                  disabled
-                  data-action="add-appointment"
-                  data-modal-open="appointment"
-                  data-name="${name ?? ""}"
-                  data-avatar="${avatar_url ?? ""}"
-                >
-                  Make an appointment
-                </button>
+                <div class="btn_card_reviews_box">
+                  <button
+                    class="btn_card_rewies is-disabled"
+                    disabled
+                    data-action="add-appointment"
+                    data-modal-open="appointment"
+                    data-name="${name ?? ""}"
+                    data-avatar="${avatar_url ?? ""}"
+                  >
+                    Make an appointment
+                  </button>
+                </div>
               </li>
             </ul>
           </div>

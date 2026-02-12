@@ -369,4 +369,12 @@
     gap: 12px;
     align-items: stretch;
   }
+  .reviews-actions {
+    width: 100%;
+  }
+  .btn_card_reviews_box {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
 }
