@@ -4,6 +4,7 @@ import {
 } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 import { auth } from "./firebase.js";
 import { syncAppointmentButtons, syncFavoriteButtons } from "./favorites.js";
+import { renderHeaderUser } from "./auth.js";
 
 export function initHeaderAuth() {
   const header = document.querySelector(".header");

@@ -49,7 +49,7 @@ regForm?.addEventListener("submit", async (e) => {
   }
 });
 
-function renderHeaderUser(user) {
+export function renderHeaderUser(user) {
   document.querySelectorAll("[data-user-name]").forEach((el) => {
     el.textContent = user ? user.displayName || user.email || "User" : "";
   });
