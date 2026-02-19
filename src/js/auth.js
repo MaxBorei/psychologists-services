@@ -38,6 +38,7 @@ regForm?.addEventListener("submit", async (e) => {
     if (name) {
       await updateProfile(user, { displayName: name });
       await reload(user);
+      renderHeaderUser(auth.currentUser);
     }
 
     regForm.reset();
@@ -47,6 +48,12 @@ regForm?.addEventListener("submit", async (e) => {
     showFormError(regForm, mapAuthError(err));
   }
 });
+
+function renderHeaderUser(user) {
+  document.querySelectorAll("[data-user-name]").forEach((el) => {
+    el.textContent = user ? user.displayName || user.email || "User" : "";
+  });
+}
 
 const loginForm = document.querySelector(".modal__login__form");
 

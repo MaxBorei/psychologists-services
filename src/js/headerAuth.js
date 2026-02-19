@@ -10,13 +10,9 @@ export function initHeaderAuth() {
   if (!header) return;
 
   onAuthStateChanged(auth, (user) => {
-    console.log("AUTH STATE:", user ? "LOGGED IN" : "LOGGED OUT", user?.uid);
-
     header.classList.toggle("is-auth", !!user);
 
-    document.querySelectorAll("[data-user-name]").forEach((el) => {
-      el.textContent = user ? user.displayName || user.email || "User" : "";
-    });
+    renderHeaderUser(user);
 
     const list = document.querySelector(".list-psychologists");
     const favList = document.querySelector(".favorites-list");
