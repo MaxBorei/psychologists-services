@@ -18,45 +18,6 @@ function closeCurrentModalByForm(formEl) {
   document.body.classList.remove("no-scroll");
 }
 
-function getFormErrorEl(formEl) {
-  let el = formEl.querySelector(".form-error");
-  if (!el) {
-    el = document.createElement("p");
-    el.className = "form-error";
-    el.setAttribute("role", "alert");
-    formEl.appendChild(el);
-  }
-  return el;
-}
-
-function showFormError(formEl, msg) {
-  const el = getFormErrorEl(formEl);
-  el.textContent = msg;
-  el.style.display = "block";
-}
-
-function clearFormError(formEl) {
-  const el = formEl.querySelector(".form-error");
-  if (!el) return;
-  el.textContent = "";
-  el.style.display = "none";
-}
-
-// function mapAuthError(err) {
-//   const code = err?.code || "";
-//   if (code === "auth/email-already-in-use")
-//     return "This email is already in use.";
-//   if (code === "auth/invalid-email") return "Invalid email address.";
-//   if (code === "auth/weak-password")
-//     return "Password should be at least 6 characters.";
-//   if (code === "auth/user-not-found") return "No user found with this email.";
-//   if (code === "auth/wrong-password") return "Incorrect password.";
-//   if (code === "auth/invalid-credential") return "Invalid email or password.";
-//   if (code === "auth/too-many-requests")
-//     return "Too many attempts. Try again later.";
-//   return "Something went wrong. Please try again.";
-// }
-
 const regForm = document.querySelector(".modal__register__form");
 
 regForm?.addEventListener("submit", async (e) => {
@@ -82,7 +43,8 @@ regForm?.addEventListener("submit", async (e) => {
     regForm.reset();
     closeCurrentModalByForm(regForm);
   } catch (err) {
-    console.error(err);
+    console.error("AUTH ERROR:", err.code, err.message, err);
+    showFormError(regForm, mapAuthError(err));
   }
 });
 
@@ -100,6 +62,53 @@ loginForm?.addEventListener("submit", async (e) => {
     loginForm.reset();
     closeCurrentModalByForm(loginForm);
   } catch (err) {
-    console.error(err);
+    console.error("AUTH ERROR:", err.code, err.message, err);
+    showFormError(loginForm, mapAuthError(err));
   }
 });
+
+function getFormErrorEl(formEl) {
+  let el = formEl.querySelector(".form-error");
+  if (!el) {
+    el = document.createElement("p");
+    el.className = "form-error";
+    el.setAttribute("role", "alert");
+    formEl.append(el);
+  }
+  return el;
+}
+
+function clearFormError(formEl) {
+  formEl.querySelector(".form-error")?.remove();
+}
+
+function showFormError(formEl, message) {
+  const el = getFormErrorEl(formEl);
+  el.textContent = message;
+}
+
+function mapAuthError(err) {
+  console.log(err);
+
+  switch (err.code) {
+    case "auth/email-already-in-use":
+      return "This email is already in use. Please use a different email.";
+    case "auth/invalid-email":
+      return "The email address is not valid. Please enter a valid email.";
+    case "auth/operation-not-allowed":
+      return "Email/password accounts are not enabled. Please contact support.";
+    case "auth/weak-password":
+      return "The password is too weak. Please use a stronger password.";
+    case "auth/user-disabled":
+      return "This user account has been disabled. Please contact support.";
+    case "auth/user-not-found":
+      return "No user found with this email. Please check your email or register for a new account.";
+    case "auth/wrong-password":
+    case "auth/invalid-credential":
+      return "The email or password is incorrect.";
+    case "auth/network-request-failed":
+      return "Network error. Please check your internet connection.";
+    default:
+      return "An unknown authentication error occurred.";
+  }
+}
