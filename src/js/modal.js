@@ -2,10 +2,13 @@ import { attachValidation } from "./validation";
 
 document.addEventListener("click", (e) => {
   const btn = e.target.closest(".password-toggle");
+
   if (!btn) return;
 
   const field = btn.closest(".password-field");
+
   const input = field?.querySelector("input");
+
   const icon = btn.querySelector("use");
   if (!input || !icon) return;
 
