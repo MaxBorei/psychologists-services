@@ -63,7 +63,7 @@ function psychologistCardMarkup(p) {
       <div class="psychologists__card__box" data-id="${id}">
         <div class="psychologists__img__box">
           <span class="onlineDot" aria-hidden="true"></span>
-          <img src="${avatar_url ?? "—"}" alt="avatar" class="psychologists__img">
+          <img loading="lazy" src="${avatar_url ?? "—"}" alt="avatar" class="psychologists__img">
         </div>
 
         <div class="psychologists__content__cta">
